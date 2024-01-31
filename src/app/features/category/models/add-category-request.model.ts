@@ -1,4 +1,4 @@
 export interface AddCategoryRequest{
-    name: string;
+    category_name: string;
    
 }

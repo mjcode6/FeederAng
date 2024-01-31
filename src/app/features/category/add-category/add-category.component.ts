@@ -19,7 +19,7 @@ private addCategorySubcription?: Subscription;
 constructor(private CategoryService: CategoryService,
   private router: Router){
   this.model = {
-    name:'',
+    category_name:'',
    
   };
 }

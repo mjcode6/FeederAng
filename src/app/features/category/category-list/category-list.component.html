@@ -20,11 +20,11 @@
 
          <tbody>
             <tr *ngFor="let category of categories">
-                <td>{{category.id}}</td>
-                <td>{{category.name}}</td>
+                <td>{{category.category_id}}</td>
+                <td>{{category.category_name}}</td>
                 
                 <td>
-                    <a class="btn btn-light" [routerLink]="['/admin/categories',category.id]">Edit</a>
+                    <a class="btn btn-light" [routerLink]="['/admin/categories',category.category_id]">Edit</a>
                 </td>
             </tr>
          </tbody>
