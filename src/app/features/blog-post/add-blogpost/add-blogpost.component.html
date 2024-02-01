@@ -35,6 +35,19 @@
 
                   </div>
                   
+
+
+                  <div class="mt-3">
+              
+                    <label for="createdAt" class="form-label">publiched Date</label>
+                    <input type="date"
+                    id="createdAt"
+                    name="createdAt"
+                    class="form-control"
+                    value="{{model.createdAt}}"
+                    [(ngModel)]="model.createdAt"
+                    (ngModelChange)="model.createdAt = $event">
+            </div>
               </div>
                 </div>
           

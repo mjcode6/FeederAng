@@ -10,15 +10,17 @@
     <thead>
        <tr>
            <th>Title</th>
-           <th>Short Description</th>
-           <th>Is Visible ?</th>
-           <th>Categories </th>
+           <th>Content</th>
+         
+           
        </tr>
     </thead>
 
     <tbody>
        <tr *ngFor="let blogPost of blogPosts">
            <td>{{blogPost.title}}</td>
+           <td>{{blogPost.content}}</td>
+         
            
           
            <td >

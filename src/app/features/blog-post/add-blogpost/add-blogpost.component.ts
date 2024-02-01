@@ -20,6 +20,7 @@ export class AddBlogpostComponent implements OnInit{
       this.model = {
         title: '',
         content: '',
+        createdAt: new Date(),
         categories: []
       }
     }
