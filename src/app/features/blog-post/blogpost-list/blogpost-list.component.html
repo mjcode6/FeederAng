@@ -11,6 +11,8 @@
        <tr>
            <th>Title</th>
            <th>Content</th>
+           <th>Categories</th>
+           <th> </th>
          
            
        </tr>
@@ -29,11 +31,12 @@
            <span class="badge bg-secondary me-2"> {{category.category_name}}</span>
           </span>
            
-          </td>
-           <td>
-              
            </td>
-       </tr>
+
+           <td>
+            <a class="btn btn-light" [routerLink]="['/admin/blogposts',blogPost.id]">Edit</a>
+           </td>
+          </tr>
     </tbody>
 </table>
 

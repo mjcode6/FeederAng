@@ -20,5 +20,9 @@ createBlogPost(data: AddBlogPost): Observable<BlogPost>{
 getAllBlogPosts():Observable<BlogPost[]>{
   return this.http.get<BlogPost[]>(`${environment.apiBaseUrl}/api/blogs`);
 }
+
+getBlogPostById(id: string):Observable<BlogPost>{
+  return this.http.get<BlogPost>(`${environment.apiBaseUrl}/api/blogs/${id}`);
+}
   
 }
