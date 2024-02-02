@@ -1,0 +1,28 @@
+<form (ngSubmit)="orderForm.valid && onSubmit()" [formGroup]="orderForm" #myForm="ngForm">
+    <div>
+        Form submitted ? {{myForm.submitted}}
+        Form valid ? {{orderForm.valid}}
+        Form invalid ? {{orderForm.invalid}}
+    </div>
+    <h1>INSCRIPTION</h1>
+    <div>
+        <label for="username-order">Identifiant</label>
+        <input name="username-order" type="text" formControlName="username">
+    </div>
+    <div *ngIf="orderForm.controls.username.errors">
+        <span *ngIf="orderForm.controls.username.errors?.['required']" class="invalidData">Un identifiant est
+            requis</span>
+    </div>
+    <div>
+        <label for="password-order">Mot de passe</label>
+        <input name="password-order" type="text" formControlName="password" maxlength="15">
+    </div>
+    <div *ngIf="orderForm.controls.password.errors">
+        <span *ngIf="orderForm.controls.password.errors?.['required']" class="invalidData">Un mot de passe est
+            requis</span>
+        <span *ngIf="orderForm.controls.password.errors?.['minlength']" class="invalidData">Le mot de passe doit
+            comporter entre 3 et 15 caractères</span>
+    </div>
+    <button type="reset">Restaurer</button>
+    <button type="submit" (click)="onSubmit()">S'inscrire</button>
+</form>

@@ -1,0 +1,26 @@
+<form (ngSubmit)="orderForm.valid && onSubmit()" [formGroup]="orderForm" #myForm="ngForm">
+    <!-- <div>
+        Form submitted ? {{myForm.submitted}}
+        Form valid ? {{orderForm.valid}}
+        Form invalid ? {{orderForm.invalid}}
+    </div> -->
+    <h1>CONNEXION</h1>
+    <div>
+        <label for="title-order">Title</label>
+        <input name="title-order" type="text" formControlName="title">
+    </div>
+    <div *ngIf="orderForm.controls.title.errors">
+        <span *ngIf="orderForm.controls.title.errors?.['required']">Le champ title est requis</span>
+    </div>
+    <div>
+        <label for="quantity-order">Quantité</label>
+        <input name="quantity-order" type="number" formControlName="quantity">
+    </div>
+    <div *ngIf="orderForm.controls.quantity.errors">
+        <span *ngIf="orderForm.controls.quantity.errors?.['required']">Le champ quantité est requis</span>
+        <span *ngIf="orderForm.controls.quantity.errors?.['max']">La quantité maximal doit être inférieur à 5</span>
+    </div>
+
+    <button type="submit">Se connecter</button>
+
+</form>

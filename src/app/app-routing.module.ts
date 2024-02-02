@@ -5,8 +5,18 @@ import { AddCategoryComponent } from './features/category/add-category/add-categ
 import { EditCategoryComponent } from './features/category/edit-category/edit-category.component';
 import { BlogpostListComponent } from './features/blog-post/blogpost-list/blogpost-list.component';
 import { AddBlogpostComponent } from './features/blog-post/add-blogpost/add-blogpost.component';
+import { SignUpComponent } from './features/signup/signup.component';
+import { SignInComponent } from './features/signin/signin.component';
 
 const routes: Routes = [
+  {
+    path: 'admin/signup',
+    component: SignUpComponent
+  },
+  {
+    path: 'admin/signin',
+    component: SignInComponent
+  },
   {
     path: 'admin/categories',
     component: CategoryListComponent
@@ -21,7 +31,7 @@ const routes: Routes = [
   },
   {
     path: 'admin/blogposts',
-  component: BlogpostListComponent
+    component: BlogpostListComponent
   },
   {
     path: 'admin/blogposts/add',
