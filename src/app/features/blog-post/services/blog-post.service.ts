@@ -24,5 +24,9 @@ getAllBlogPosts():Observable<BlogPost[]>{
 getBlogPostById(id: string):Observable<BlogPost>{
   return this.http.get<BlogPost>(`${environment.apiBaseUrl}/api/blogs/${id}`);
 }
+
+getBlogPostByContent(content: string):Observable<BlogPost>{
+  return this.http.get<BlogPost>(`${environment.apiBaseUrl}/api/blogs/${content}`);
+}
   
 }
