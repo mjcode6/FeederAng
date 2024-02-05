@@ -20,7 +20,8 @@ export class CategoryListComponent implements OnInit{
 
   }
   ngOnInit(): void {
-  this.categories$ = this.categoryServices.getAllCategories();
+   this.categories$ = this.categoryServices.getAllCategories();
+  
    
   }
 }

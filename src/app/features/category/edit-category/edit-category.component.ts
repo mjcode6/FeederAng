@@ -50,7 +50,7 @@ category?: Category;
 
   onFormSubmit(): void{
      const updateCategoryRequest: updateCategoryRequest = {
-         category_name: this.category?.category_name ?? '',
+         categoryName: this.category?.categoryName ?? '',
       
      };
     
