@@ -16,15 +16,7 @@
             <textarea id="content" name="content" class="form-control" style="height: 350px; max-height: 350px;"
               [(ngModel)]="model.content">   </textarea>
           </div>
-
-
-
-
-
-
-
-
-          <div class="mt-3">
+         <div class="mt-3">
 
             <label for="createdAt" class="form-label">publiched Date</label>
             <input type="date" id="createdAt" name="createdAt" class="form-control" value="{{model.createdAt}}"
@@ -33,7 +25,19 @@
         </div>
       </div>
 
+       <div class="mt-3">
+        <label for="categories" class="form-label"> Categories</label>
+        <ng-container *ngIf="categories$ | async as categories">
+            <select class="form-control"  name="categories" id="categories" multiple>
 
+                <option *ngFor="let category of categories" [value]="category.categoryId">{{category.categoryName}}</option>
+
+            </select>
+
+
+        </ng-container>
+
+       </div>
 
 
 
@@ -48,3 +52,7 @@
     </div>
 
   </form>
+
+
+
+  <!-- [(ngModel)]="model.categories"-->
