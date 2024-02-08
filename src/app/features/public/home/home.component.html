@@ -19,9 +19,17 @@
 
                         <span class="d-flex align-items-end " style="flex: -1;">
 
-                            <a [routerLink]="['blog',blog.content]" class="btn btn-primary">Read More</a>
+                            <div *ngIf="showDetail">
+                                <app-blog-details [blogPost]="blog"></app-blog-details>
+                            </div>
+                            
+
+
+                         
 
                         </span>
+
+                        <button (click)="showDetails()">Show details  </button>
 
                      </div>
                     </div>

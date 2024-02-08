@@ -9,7 +9,7 @@ import { BlogPost } from '../../blog-post/models/blog-post.model';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
+  showDetail :boolean =  false; 
   blogs$?: Observable<BlogPost[]>;
 
 constructor(private blogPostService: BlogPostService){
@@ -17,6 +17,9 @@ constructor(private blogPostService: BlogPostService){
 }
   ngOnInit(): void {
    this.blogs$ =   this.blogPostService.getAllBlogPosts();
+  }
+  showDetails(): void {
+    this.showDetail = true;
   }
 
 
