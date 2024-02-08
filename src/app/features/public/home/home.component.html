@@ -1,45 +1,16 @@
-<div class="container">
-    <div class="my-5">
-        <div class="row align-items-lg-stretch">
-            <ng-container *ngIf="blogs$ | async as blogs" >
-                <div class="col-12 col-md-4 mb-3" *ngFor="let blog of blogs">
-                    <div class="card h-100">
-                     <!-- this for images-->
+<div class="article" *ngFor="let article of articles" (click)="showDetails(article)">
+          
+    <div class="article-details">
+        {{ article.id }} - {{ article.title }}  
+        <p>createdAt:  {{ article.createdAt | date }} </p> 
+        <p>createdBy:  {{ article.user.firstname | uppercase }} </p>
 
-                     <div class="card-body d-flex flex-column">
-                        <h5 class="card-title">
-                            {{blog.title}}
-
-                        </h5>
-
-                        <p class="card-text">
-                            {{blog.title}}  <!--normaly It's for short content or short description  --> 
-
-                        </p>
-
-                        <span class="d-flex align-items-end " style="flex: -1;">
-
-                            <div *ngIf="showDetail">
-                                <app-blog-details [blogPost]="blog"></app-blog-details>
-                            </div>
-                            
-
-
-                         
-
-                        </span>
-
-                        <button (click)="showDetails()">Show details  </button>
-
-                     </div>
-                    </div>
-
-                </div>
-
-            </ng-container>
-
+ 
+        
+        <div *ngIf="selectedArticle === article" class="article-details">
+            <div *ngIf="isEditMode">
+             </div>
+          <app-blog-details [blogPost]="selectedArticle" ></app-blog-details>
         </div>
-
     </div>
-
 </div>

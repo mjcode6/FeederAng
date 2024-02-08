@@ -1,0 +1,85 @@
+.container {
+    display: flex;
+    justify-content: center;
+  }
+  .blocs {
+    width: 100px;
+    height: 100px;
+   }
+  /* Ajoutez ces styles dans votre fichier CSS */
+
+/* Style pour l'icône de tri */
+.sort-icon {
+  font-size: 12px;
+  margin-left: 5px;
+}
+button {
+  background-color: #008CBA;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+button:hover {
+  background-color: #005684;
+}
+
+/* Ajoutez des styles supplémentaires pour améliorer le design selon vos préférences */
+
+
+/* .article-list{
+  display: block;
+  justify-content: space-around; 
+  padding: 1p;
+  border: 10%;
+  margin: 1px;
+
+}
+
+.article{
+background-color: aqua;
+  width: 100%;
+  height: 100%;
+  margin: 10px;
+} */
+
+/* Style pour la liste d'articles */
+.article-list {
+  display: flex;
+ 
+  justify-content: space-around;
+ 
+}
+
+/* Style pour chaque article */
+.article {
+  /* border: 1px solid #ddd; */
+  justify-content: space-around;
+ 
+  padding: 15px;
+  margin: 10px;
+  width: 100%;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.article:hover {
+  background-color: #f9f9f9;
+}
+
+/* Style pour les détails de l'article */
+.article-details {
+ 
+  padding: 10px;
+  /* border: 1px solid #ddd; */
+  background-color: #f9f9f9;
+}
+.update-article{
+  display: flex;
+  background-color: bisque; 
+  padding: 1%;
+  border: 1%;
+  margin: 1%;
+}

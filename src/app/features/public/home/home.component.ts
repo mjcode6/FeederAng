@@ -9,18 +9,81 @@ import { BlogPost } from '../../blog-post/models/blog-post.model';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  showDetail :boolean =  false; 
-  blogs$?: Observable<BlogPost[]>;
+ 
+  articles: any[] = [];
+  newArticle: any = {};
+  selectedArticle: any;
+  deletingArticle: any;
+  isEditMode: boolean = false;
 
-constructor(private blogPostService: BlogPostService){
 
-}
+
+  enableEditMode(): void {
+    this.isEditMode = true;
+  }
+
+
+  cancelUpdate(): void {
+    this.isEditMode = false; // Exit edit mode without saving
+  }
+
+
+  dataReceived!  : String; 
+  constructor(private articleService: BlogPostService ) { 
+
+  }
+
+  sortOrder: 'asc' | 'desc' = 'asc'; // Ajout de la propriété de suivi de l'ordre de tri
+
+
+
   ngOnInit(): void {
-   this.blogs$ =   this.blogPostService.getAllBlogPosts();
+    this.loadArticles();
   }
-  showDetails(): void {
-    this.showDetail = true;
+
+  loadArticles(): void {
+  //  if (this.authService.isAuthenticated()) {
+      this.articleService.getAllBlogPosts().subscribe(
+        (data) => {
+          this.articles = data;
+        },
+        (error) => {
+          console.error('Error fetching articles:', error);
+        }
+      );
+   // }
   }
+
+
+  showDetails(article: any): void {
+    this.selectedArticle = article;
+  }
+
+
+  deleteArticle(article: any): void {
+    this.deletingArticle = article;
+  }
+
+  // Fonction de tri
+  sortArticles(order: 'asc' | 'desc'): void {
+    this.sortOrder = order; // Met à jour l'ordre de tri
+    this.articles.sort((a, b) => {
+      if (order === 'asc') {
+        return a.title.localeCompare(b.title);
+      } else {
+        return b.title.localeCompare(a.title);
+      }
+    });
+  }
+
+  onDataReceived(event: String) {
+    console.log("recived " +event);
+    this.isEditMode = false; // Exit edit mode after saving
+    this.loadArticles(); 
+ 
+  }
+  
+ 
 
 
 }

@@ -13,7 +13,7 @@ export class BlogDetailsComponent implements OnInit{
 
   url: string | null = null;
  
-  @Input() blogPost! :  BlogPost; 
+  @Input() blogPost! :  any; 
   constructor(private route: ActivatedRoute,
     private blogPostService: BlogPostService){
 
