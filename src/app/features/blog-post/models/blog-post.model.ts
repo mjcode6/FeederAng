@@ -1,6 +1,8 @@
 import { Category } from "../../category/models/category.model";
 
 export interface BlogPost{
+showContent: any;
+author: any;
 
     // tempo declaration
 map(arg0: (x: any) => any): string[];
