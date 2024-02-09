@@ -26,9 +26,6 @@ getBlogPostById(id: string):Observable<BlogPost>{
   return this.http.get<BlogPost>(`${environment.apiBaseUrl}/api/blogs/${id}`);
 }
 
-getBlogPostByContent(content: string):Observable<BlogPost>{
-  return this.http.get<BlogPost>(`${environment.apiBaseUrl}/api/blogs/${content}`);
-}
 
 updateBlogPost(id: string, updateBlogPost: updateBolgPost): Observable<BlogPost>{
   return this.http.put<BlogPost>(`${environment.apiBaseUrl}/api/blogs/${id}`,updateBlogPost);

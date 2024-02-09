@@ -21,6 +21,7 @@ export class AddBlogpostComponent implements OnInit{
         title: '',
         content: '',
         createdAt: new Date(),
+       // categories: Category[] =[]
         categories: []
       }
     }
