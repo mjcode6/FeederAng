@@ -13,7 +13,7 @@
             <p><strong>Author:</strong> {{ article.author }}</p>
             <p><strong>Category:</strong> {{ article.categories }}</p>
             <p *ngIf="article.showContent">{{ article.content }}</p>
-            <button class="btn btn-primary" (click)="toggleContent(article)">See More ...</button>
+            <button (click)="toggleContent(article)">See More ...</button>
           </div>
         </div>
       </ng-container>

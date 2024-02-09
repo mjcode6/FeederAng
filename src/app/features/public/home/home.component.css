@@ -33,17 +33,17 @@
   }
   
   .article button {
-    background-color: #007bff;
+    background-color: green;
     color: #fff;
     border: none;
-    padding: 10px 20px;
+    padding: 8px 15px;
     border-radius: 5px;
     cursor: pointer;
   }
   
   .article button:hover {
-    background-color: #0056b3;
-  }
+    background-color: greenyellow;
+  } 
   
 /* Style the placeholder text */
 .search-container input[type="text"]::placeholder {
