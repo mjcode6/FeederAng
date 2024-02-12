@@ -5,7 +5,7 @@
     <a [routerLink]="['/admin/blogposts/add']" class="btn btn-primary">Add Blog Post</a>
   </div>
 
-<ng-container *ngIf="blogPosts | async as blogPosts">
+<ng-container *ngIf="blogPosts$ | async as blogPosts">
   <table class="table table-bordered mt-3">
     <thead>
        <tr>
