@@ -1,26 +1,28 @@
 <form (ngSubmit)="orderForm.valid && onSubmit()" [formGroup]="orderForm" #myForm="ngForm">
-    <!-- <div>
+    <div>
         Form submitted ? {{myForm.submitted}}
         Form valid ? {{orderForm.valid}}
         Form invalid ? {{orderForm.invalid}}
-    </div> -->
-    <h1>CONNEXION</h1>
+    </div>
+    <h1>CONNECTION</h1>
     <div>
-        <label for="title-order">Title</label>
-        <input name="title-order" type="text" formControlName="title">
+        <label for="username-order">Identifiant</label>
+        <input name="username-order" type="text" formControlName="username">
     </div>
-    <div *ngIf="orderForm.controls.title.errors">
-        <span *ngIf="orderForm.controls.title.errors?.['required']">Le champ title est requis</span>
+    <div *ngIf="orderForm.controls.username.errors">
+        <span *ngIf="orderForm.controls.username.errors?.['required']" class="invalidData">Un identifiant est
+            requis</span>
     </div>
     <div>
-        <label for="quantity-order">Quantité</label>
-        <input name="quantity-order" type="number" formControlName="quantity">
+        <label for="password-order">Mot de passe</label>
+        <input name="password-order" type="text" formControlName="password" maxlength="15">
     </div>
-    <div *ngIf="orderForm.controls.quantity.errors">
-        <span *ngIf="orderForm.controls.quantity.errors?.['required']">Le champ quantité est requis</span>
-        <span *ngIf="orderForm.controls.quantity.errors?.['max']">La quantité maximal doit être inférieur à 5</span>
+    <div *ngIf="orderForm.controls.password.errors">
+        <span *ngIf="orderForm.controls.password.errors?.['required']" class="invalidData">Un mot de passe est
+            requis</span>
+        <span *ngIf="orderForm.controls.password.errors?.['minlength']" class="invalidData">Le mot de passe doit
+            comporter entre 3 et 15 caractères</span>
     </div>
-
+    <button type="reset">Restaurer</button>
     <button type="submit">Se connecter</button>
-
 </form>

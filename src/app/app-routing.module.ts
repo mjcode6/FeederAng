@@ -8,6 +8,8 @@ import { AddBlogpostComponent } from './features/blog-post/add-blogpost/add-blog
 import { HomeComponent } from './features/public/home/home.component';
 import { BlogDetailsComponent } from './features/public/blog-details/blog-details.component';
 import { EditBlogpostComponent } from './features/blog-post/edit-blogpost/edit-blogpost.component';
+import { SignUpComponent } from './features/signup/signup.component';
+import { SignInComponent } from './features/signin/signin.component';
 
 const routes: Routes = [
   {
@@ -18,6 +20,14 @@ const routes: Routes = [
   {
     path: 'blog/:url',
     component: BlogDetailsComponent
+  },
+  {
+    path: 'admin/inscription',
+    component: SignUpComponent
+  },
+  {
+    path: 'admin/connection',
+    component: SignInComponent
   },
   {
     path: 'admin/categories',

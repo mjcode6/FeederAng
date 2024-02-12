@@ -15,7 +15,9 @@ import { MarkdownModule } from 'ngx-markdown';
 import { EditBlogpostComponent } from './features/blog-post/edit-blogpost/edit-blogpost.component';
 import { HomeComponent } from './features/public/home/home.component';
 import { BlogDetailsComponent } from './features/public/blog-details/blog-details.component';
-
+import { ReactiveFormsModule } from '@angular/forms';
+import { SignInComponent } from './features/signin/signin.component';
+import { SignUpComponent } from './features/signup/signup.component';
 
 
 
@@ -31,13 +33,16 @@ import { BlogDetailsComponent } from './features/public/blog-details/blog-detail
     AddBlogpostComponent,
     EditBlogpostComponent,
     HomeComponent,
-    BlogDetailsComponent
+    BlogDetailsComponent,
+    SignInComponent,
+    SignUpComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    ReactiveFormsModule,
     MarkdownModule.forRoot()
   ],
   providers: [],

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { FormArray, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormArray, FormBuilder, Validators } from '@angular/forms';
 import { AbstractControl, ValidatorFn, ValidationErrors } from "@angular/forms";
+import { HttpClient } from '@angular/common/http';
 
 
 @Component({
@@ -11,7 +12,7 @@ import { AbstractControl, ValidatorFn, ValidationErrors } from "@angular/forms";
 
 export class SignUpComponent {
 
-    constructor(private formBuilder: FormBuilder) { };
+    constructor(private formBuilder: FormBuilder, private httpClient: HttpClient) { }
 
     orderForm = this.formBuilder.group({
         username: ['', Validators.required],
@@ -44,5 +45,15 @@ export class SignUpComponent {
 
         // Output the new user object to the console
         console.log('Nouvel utilisateur ' + newUser.username + ' :', newUser);
+        this.httpClient.post<any>('http://localhost:8080/inscription', formValues).subscribe(
+            response => {
+                // Gérer la réponse du serveur ici
+                console.log('Réponse du serveur :', response);
+            },
+            error => {
+                // Gérer les erreurs ici
+                console.error('Erreur lors de la requête POST :', error);
+            }
+        );
     }
 };
