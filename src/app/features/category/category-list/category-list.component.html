@@ -4,7 +4,7 @@
         <a [routerLink]="['/admin/categories/add']" class="btn btn-primary">Add Category</a>
 
     </div>
-</div>
+
 
 
 <ng-container *ngIf="categories$ | async as categories">
@@ -20,11 +20,11 @@
 
          <tbody>
             <tr *ngFor="let category of categories">
-                <td>{{category.id}}</td>
-                <td>{{category.name}}</td>
+                <td>{{category.categoryId}}</td>
+                <td>{{category.categoryName}}</td>
                 
                 <td>
-                    <a class="btn btn-light" [routerLink]="['/admin/categories',category.id]">Edit</a>
+                    <a class="btn btn-light" [routerLink]="['/admin/categories',category.categoryId]">Edit</a>
                 </td>
             </tr>
          </tbody>
@@ -32,3 +32,5 @@
 
 
 </ng-container>
+
+</div>

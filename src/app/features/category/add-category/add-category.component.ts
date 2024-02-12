@@ -19,7 +19,7 @@ private addCategorySubcription?: Subscription;
 constructor(private CategoryService: CategoryService,
   private router: Router){
   this.model = {
-    name:'',
+    categoryName:'',
    
   };
 }
@@ -29,7 +29,7 @@ onFormSubmit(){
   
      this.addCategorySubcription    = this.CategoryService.addCategory(this.model)
 .subscribe({
-  next: (Response) => {
+  next: (response) => {
     this.router.navigateByUrl('/admin/categories');
   },
   error: (error) => {

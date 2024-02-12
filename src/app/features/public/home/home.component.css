@@ -1,0 +1,60 @@
+.container {
+    max-width: 1200px; /* Adjust as needed */
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .search-container {
+    margin-bottom: 20px;
+  }
+  
+  .search-container input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  .article {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 20px;
+  }
+  
+  .article h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .article p {
+    margin: 5px 0;
+  }
+  
+  .article button {
+    background-color: green;
+    color: #fff;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .article button:hover {
+    background-color: greenyellow;
+  } 
+  
+/* Style the placeholder text */
+.search-container input[type="text"]::placeholder {
+    font-size: 24px; /* Adjust the font size as needed */
+    color: #999999; /* Adjust the color as needed */
+    font-style: italic; /* Optionally, you can italicize the placeholder */
+    /* You can also adjust the length of the placeholder text */
+  }
+  
+  /* For longer placeholder text */
+  .search-container input[type="text"]::placeholder::after {
+    content: " Search by title..."; /* Adjust the content as needed */
+  }
+  

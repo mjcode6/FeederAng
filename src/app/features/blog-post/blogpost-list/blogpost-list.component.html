@@ -10,28 +10,33 @@
     <thead>
        <tr>
            <th>Title</th>
-           <th>Short Description</th>
-           <th>Is Visible ?</th>
-           <th>Categories </th>
+           <th>Content</th>
+           <th>Categories</th>
+           <th> </th>
+         
+           
        </tr>
     </thead>
 
     <tbody>
        <tr *ngFor="let blogPost of blogPosts">
            <td>{{blogPost.title}}</td>
+           <td>{{blogPost.content}}</td>
+         
            
           
            <td >
            <span *ngFor="let category of blogPost.categories">  
             
-           <span class="badge bg-secondary me-2"> {{category.name}}</span>
+            <span class="badge bg-secondary mr-2"> {{category.categoryName}}</span> 
           </span>
            
-          </td>
-           <td>
-              
            </td>
-       </tr>
+
+           <td>
+            <a class="btn btn-light" [routerLink]="['/admin/blogposts',blogPost.id]">Edit</a>
+           </td>
+          </tr>
     </tbody>
 </table>
 

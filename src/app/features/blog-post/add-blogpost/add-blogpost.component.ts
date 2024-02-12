@@ -14,12 +14,16 @@ import { Category } from '../../category/models/category.model';
 export class AddBlogpostComponent implements OnInit{
     model: AddBlogPost;
     categories$?: Observable<Category[]>;
+    selectedCategories: string[] = []; 
+categories: any;
 
     constructor(private BlogPostService: BlogPostService,
       private router: Router, private categoryService: CategoryService){
       this.model = {
         title: '',
         content: '',
+        createdAt: new Date(),
+       // categories: Category[] =[]
         categories: []
       }
     }
@@ -27,18 +31,21 @@ export class AddBlogpostComponent implements OnInit{
     this.categories$ = this.categoryService.getAllCategories();
   }
 
-
-    onFormSubmit(): void{
+    onFormSubmit(): void {
+      // Assuming selectedCategories is updated from your form control
+      if (this.selectedCategories === undefined) {
+        this.selectedCategories = []; // Initialize if undefined
+      }
+    
+      this.model.categories = this.selectedCategories;
       console.log(this.model);
-   this.BlogPostService.createBlogPost(this.model)
-   .subscribe({
-    next: (response) => {
-      this.router.navigateByUrl('/admin/blogposts');
+      
+      this.BlogPostService.createBlogPost(this.model)
+        .subscribe({
+          next: (response) => {
+            this.router.navigateByUrl('/admin/blogposts');
+          }
+        });
     }
-   })
-   ;
-
-
-
-    }
+    
 }

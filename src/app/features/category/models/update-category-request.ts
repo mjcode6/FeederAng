@@ -1,4 +1,4 @@
 export interface updateCategoryRequest{
-    name: string;
+    categoryName: string;
    
 }
