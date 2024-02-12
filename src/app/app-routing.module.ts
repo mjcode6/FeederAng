@@ -13,9 +13,8 @@ import { SignInComponent } from './features/signin/signin.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'public/Home',
     component: HomeComponent
-
   },
   {
     path: 'blog/:url',

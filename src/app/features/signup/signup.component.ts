@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormArray, FormBuilder, Validators } from '@angular/forms';
-import { AbstractControl, ValidatorFn, ValidationErrors } from "@angular/forms";
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-sign-up',
@@ -12,7 +11,7 @@ import { HttpClient } from '@angular/common/http';
 
 export class SignUpComponent {
 
-    constructor(private formBuilder: FormBuilder, private httpClient: HttpClient) { }
+    constructor(private formBuilder: FormBuilder, private httpClient: HttpClient, private router: Router) { } // Inject Router here
 
     orderForm = this.formBuilder.group({
         username: ['', Validators.required],
@@ -55,5 +54,6 @@ export class SignUpComponent {
                 console.error('Erreur lors de la requête POST :', error);
             }
         );
+        this.router.navigate(['/public/Home']);
     }
-};
+}

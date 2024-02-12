@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-sign-in',
@@ -9,7 +10,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class SignInComponent {
 
-    constructor(private formBuilder: FormBuilder, private httpClient: HttpClient) { }
+    constructor(private formBuilder: FormBuilder, private httpClient: HttpClient, private router: Router) { }
 
     orderForm = this.formBuilder.group({
         username: ['', Validators.required],
@@ -40,5 +41,6 @@ export class SignInComponent {
                 console.error('Erreur lors de la requête POST :', error);
             }
         );
+        this.router.navigate(['/public/Home']);
     }
 }

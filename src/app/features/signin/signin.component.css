@@ -1,0 +1,43 @@
+section {
+    background-color: #eeeeee;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100vh;
+    padding-top: 10%;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 350px;
+}
+
+input {
+    width: 100%;
+    height: 50px;
+    border: grey solid 1px;
+    border-radius: 5px;
+    padding-left: 10px;
+    margin-bottom: 20px;
+}
+
+input:focus-within {
+    outline: 1px solid #007aff;
+    border: 0px;
+}
+
+
+button {
+    background-color: #007aff;
+    color: white;
+    font-size: 20px;
+    width: 100%;
+    height: 50px;
+    border: 0px;
+    border-radius: 5px;
+    padding-left: 10px;
+}
