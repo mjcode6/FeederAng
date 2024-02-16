@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { AuthService } from '../../core/components/services/AuthService';
 
 @Component({
     selector: 'app-sign-in',
@@ -10,7 +11,11 @@ import { Router } from '@angular/router';
 })
 export class SignInComponent {
 
-    constructor(private formBuilder: FormBuilder, private httpClient: HttpClient, private router: Router) { }
+    constructor(
+        private formBuilder: FormBuilder,
+        private httpClient: HttpClient,
+        private router: Router,
+        private authService: AuthService) { }
 
     orderForm = this.formBuilder.group({
         username: ['', Validators.required],
@@ -29,18 +34,31 @@ export class SignInComponent {
     onSubmit() {
         // Get form values as an object
         const formValues = this.orderForm.value;
-
+        const usernameValue = formValues.username;
+        const passwordValue = formValues.password;
+        const askUser = {
+            username: usernameValue,
+            password: passwordValue
+        };
         // Make HTTP POST request with form data in the request body
-        this.httpClient.post<any>('http://localhost:8080/login', formValues).subscribe(
+        this.httpClient.post<any>('http://localhost:8080/api/users/verify', formValues).subscribe(
             response => {
                 // Gérer la réponse du serveur ici
-                console.log('Réponse du serveur :', response);
+                // console.log('Réponse du serveur :', response);
+                if (askUser.username === response.username) {
+                    if (response.username) {
+                        // console.log("Username = " + usernameValue);
+                        this.authService.setUsername(response.username);
+                        this.router.navigate(['/public/Home']).then(() => {
+                            window.location.reload();
+                        });
+                    }
+                }
             },
             error => {
                 // Gérer les erreurs ici
                 console.error('Erreur lors de la requête POST :', error);
             }
         );
-        this.router.navigate(['/public/Home']);
     }
 }

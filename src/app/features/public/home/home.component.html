@@ -1,8 +1,7 @@
-  <div class="container">
+<div class="container">
   <div class="search-container">
     <input type="text" [(ngModel)]="searchTitle" (input)="filterArticles()" placeholder="Search by title">
   </div>
-
   <div class="container">
     <div class="row">
       <ng-container *ngFor="let article of filteredArticles">
@@ -19,5 +18,4 @@
       </ng-container>
     </div>
   </div>
-  
-</div> 
+</div>

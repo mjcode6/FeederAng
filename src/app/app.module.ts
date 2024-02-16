@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './core/components/navbar/navbar.component';
@@ -18,9 +17,8 @@ import { BlogDetailsComponent } from './features/public/blog-details/blog-detail
 import { ReactiveFormsModule } from '@angular/forms';
 import { SignInComponent } from './features/signin/signin.component';
 import { SignUpComponent } from './features/signup/signup.component';
-
-
-
+import { LogOutComponent } from './features/logout/logout.component';
+import { AuthService } from './core/components/services/AuthService';
 
 @NgModule({
   declarations: [
@@ -35,7 +33,8 @@ import { SignUpComponent } from './features/signup/signup.component';
     HomeComponent,
     BlogDetailsComponent,
     SignInComponent,
-    SignUpComponent
+    SignUpComponent,
+    LogOutComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +44,7 @@ import { SignUpComponent } from './features/signup/signup.component';
     ReactiveFormsModule,
     MarkdownModule.forRoot()
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

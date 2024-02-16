@@ -1,6 +1,7 @@
 import { Category } from "../../category/models/category.model";
 
 export interface BlogPost{
+user: any;
 showContent: any;
 author: any;
 

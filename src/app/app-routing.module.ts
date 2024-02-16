@@ -10,6 +10,8 @@ import { BlogDetailsComponent } from './features/public/blog-details/blog-detail
 import { EditBlogpostComponent } from './features/blog-post/edit-blogpost/edit-blogpost.component';
 import { SignUpComponent } from './features/signup/signup.component';
 import { SignInComponent } from './features/signin/signin.component';
+import { LogOutComponent } from './features/logout/logout.component';
+import { NavbarComponent } from './core/components/navbar/navbar.component';
 
 const routes: Routes = [
   {
@@ -27,6 +29,10 @@ const routes: Routes = [
   {
     path: 'admin/connection',
     component: SignInComponent
+  },
+  {
+    path: 'admin/deconnection',
+    component: LogOutComponent
   },
   {
     path: 'admin/categories',

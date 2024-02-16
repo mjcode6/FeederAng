@@ -24,7 +24,7 @@ export class SignUpComponent {
         this.orderForm.valueChanges
             // listen to value change
             .subscribe(value => {
-                console.log('orderForm value changes : ', value);
+                // console.log('orderForm value changes : ', value);
             });
     };
 
@@ -43,11 +43,14 @@ export class SignUpComponent {
         };
 
         // Output the new user object to the console
-        console.log('Nouvel utilisateur ' + newUser.username + ' :', newUser);
+        // console.log('Nouvel utilisateur ' + newUser.username + ' :', newUser);
         this.httpClient.post<any>('http://localhost:8080/inscription', formValues).subscribe(
             response => {
                 // Gérer la réponse du serveur ici
-                console.log('Réponse du serveur :', response);
+                // console.log('Réponse du serveur :', response);
+                this.router.navigate(['/admin/connection']).then(() => {
+                    window.location.reload();
+                });
             },
             error => {
                 // Gérer les erreurs ici
