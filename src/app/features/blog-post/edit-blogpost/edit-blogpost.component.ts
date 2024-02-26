@@ -78,13 +78,11 @@ onDelete():void{
 
     if(this.model && this.id){
       var updateBolgPost: updateBolgPost = {
-
         title: this.model.title,
         content: this.model.content,
         createdAt: this.model.createdAt,
-        categories: this.selectedCategories ?? []
-
-
+        categories: this.selectedCategories ?? [],
+        id: 0
       };
       this.updateBlogPostSubcription = this.blogPostServices.updateBlogPost(this.id,updateBolgPost)
       .subscribe({

@@ -1,4 +1,5 @@
 export interface updateBolgPost{
+    id: number;
     title:string;
 
 content: string;
