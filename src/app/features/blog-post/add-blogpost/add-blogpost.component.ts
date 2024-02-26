@@ -20,6 +20,7 @@ categories: any;
     constructor(private BlogPostService: BlogPostService,
       private router: Router, private categoryService: CategoryService){
       this.model = {
+        id: 0,
         title: '',
         content: '',
         createdAt: new Date(),
