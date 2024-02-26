@@ -6,6 +6,7 @@ import { BlogPost } from '../models/blog-post.model';
 import { updateBolgPost } from '../models/update-blog-post.model';
 import { CategoryService } from '../../category/services/CategoryService';
 import { Category } from '../../category/models/category.model';
+import { AuthService } from 'src/app/core/components/services/AuthService';
 
 @Component({
   selector: 'app-edit-blogpost',
@@ -28,7 +29,8 @@ export class EditBlogpostComponent implements OnInit, OnDestroy {
   constructor(private route: ActivatedRoute,
     private blogPostServices: BlogPostService,
     private categoryService: CategoryService,
-    private router: Router) {
+    private router: Router,
+    private authService: AuthService) {
 
   }
 
@@ -52,6 +54,7 @@ export class EditBlogpostComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.username = this.authService.getUsername();
     this.categories$ = this.categoryService.getAllCategories();
 
     this.routeSubscription = this.route.paramMap.subscribe({
@@ -66,13 +69,13 @@ export class EditBlogpostComponent implements OnInit, OnDestroy {
               if (response.user.username.toLowerCase().trim() === this.username?.toLowerCase().trim()) {
                 this.isAuthor = true;
               }
-              this.selectedCategories = response.map(x => x.id);
-
+              // this.selectedCategories = response.map(x => x.id);
             }
           });;
         }
       }
     });
+    console.log(this.isAuthor);
   }
 
   onFormSubmit(): void {
