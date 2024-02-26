@@ -6,7 +6,6 @@ import { BlogPost } from '../models/blog-post.model';
 import { updateBolgPost } from '../models/update-blog-post.model';
 import { CategoryService } from '../../category/services/CategoryService';
 import { Category } from '../../category/models/category.model';
-import { AuthService } from '../../../core/components/services/AuthService';
 
 @Component({
   selector: 'app-edit-blogpost',
@@ -29,14 +28,14 @@ export class EditBlogpostComponent implements OnInit, OnDestroy {
   constructor(private route: ActivatedRoute,
     private blogPostServices: BlogPostService,
     private categoryService: CategoryService,
-    private router: Router,
-    private authService: AuthService) {
+    private router: Router) {
 
   }
 
   onDelete(): void {
     if (this.id) {
       // call the service and delete blog post
+
       this.deleteBlogPostSubcription = this.blogPostServices.deleteBlogPost(this.id)
         .subscribe({
           next: (response) => {
@@ -53,10 +52,8 @@ export class EditBlogpostComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    // Determiner l'utilisateur connecté
-    this.username = this.authService.getUsername();
-    ///////////////////////////////////////////////
     this.categories$ = this.categoryService.getAllCategories();
+
     this.routeSubscription = this.route.paramMap.subscribe({
       next: (params) => {
         this.id = params.get('id');
@@ -69,8 +66,10 @@ export class EditBlogpostComponent implements OnInit, OnDestroy {
               if (response.user.username.toLowerCase().trim() === this.username?.toLowerCase().trim()) {
                 this.isAuthor = true;
               }
+              this.selectedCategories = response.map(x => x.id);
+
             }
-          });
+          });;
         }
       }
     });
@@ -95,6 +94,10 @@ export class EditBlogpostComponent implements OnInit, OnDestroy {
             this.router.navigateByUrl('/admin/blogposts');
           }
         });
+
     }
+
+
   }
+
 }

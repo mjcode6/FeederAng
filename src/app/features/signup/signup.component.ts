@@ -44,7 +44,7 @@ export class SignUpComponent {
 
         // Output the new user object to the console
         // console.log('Nouvel utilisateur ' + newUser.username + ' :', newUser);
-        this.httpClient.post<any>('http://localhost:8080/inscription', formValues).subscribe(
+        this.httpClient.post<any>('http://localhost:8080/api/users/inscription', formValues).subscribe(
             response => {
                 // Gérer la réponse du serveur ici
                 // console.log('Réponse du serveur :', response);

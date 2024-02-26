@@ -1,8 +1,8 @@
-export interface AddBlogPost{
-    
-title:string;
+export interface AddBlogPost {
 
-content: string;
-createdAt: Date;
-categories: string[];
+    title: string;
+
+    content: string;
+    createdAt: Date;
+    categories: string[];
 }
