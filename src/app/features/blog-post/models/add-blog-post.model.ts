@@ -1,3 +1,4 @@
+
 import { Category } from "../../category/models/category.model";
 
 export interface AddBlogPost{
@@ -7,4 +8,5 @@ title:string;
 content: string;
 createdAt: Date;
 categories: Category[];
+
 }

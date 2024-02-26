@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './core/components/navbar/navbar.component';
@@ -15,10 +14,11 @@ import { MarkdownModule } from 'ngx-markdown';
 import { EditBlogpostComponent } from './features/blog-post/edit-blogpost/edit-blogpost.component';
 import { HomeComponent } from './features/public/home/home.component';
 import { BlogDetailsComponent } from './features/public/blog-details/blog-details.component';
-
-
-
-
+import { ReactiveFormsModule } from '@angular/forms';
+import { SignInComponent } from './features/signin/signin.component';
+import { SignUpComponent } from './features/signup/signup.component';
+import { LogOutComponent } from './features/logout/logout.component';
+import { AuthService } from './core/components/services/AuthService';
 
 @NgModule({
   declarations: [
@@ -31,16 +31,20 @@ import { BlogDetailsComponent } from './features/public/blog-details/blog-detail
     AddBlogpostComponent,
     EditBlogpostComponent,
     HomeComponent,
-    BlogDetailsComponent
+    BlogDetailsComponent,
+    SignInComponent,
+    SignUpComponent,
+    LogOutComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    ReactiveFormsModule,
     MarkdownModule.forRoot()
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

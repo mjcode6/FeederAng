@@ -5,19 +5,34 @@ import { AddCategoryComponent } from './features/category/add-category/add-categ
 import { EditCategoryComponent } from './features/category/edit-category/edit-category.component';
 import { BlogpostListComponent } from './features/blog-post/blogpost-list/blogpost-list.component';
 import { AddBlogpostComponent } from './features/blog-post/add-blogpost/add-blogpost.component';
-import { EditBlogpostComponent } from './features/blog-post/edit-blogpost/edit-blogpost.component';
 import { HomeComponent } from './features/public/home/home.component';
 import { BlogDetailsComponent } from './features/public/blog-details/blog-details.component';
+import { EditBlogpostComponent } from './features/blog-post/edit-blogpost/edit-blogpost.component';
+import { SignUpComponent } from './features/signup/signup.component';
+import { SignInComponent } from './features/signin/signin.component';
+import { LogOutComponent } from './features/logout/logout.component';
+import { NavbarComponent } from './core/components/navbar/navbar.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'public/Home',
     component: HomeComponent
-
   },
   {
     path: 'blog/:url',
     component: BlogDetailsComponent
+  },
+  {
+    path: 'admin/inscription',
+    component: SignUpComponent
+  },
+  {
+    path: 'admin/connection',
+    component: SignInComponent
+  },
+  {
+    path: 'admin/deconnection',
+    component: LogOutComponent
   },
   {
     path: 'admin/categories',
@@ -33,7 +48,7 @@ const routes: Routes = [
   },
   {
     path: 'admin/blogposts',
-  component: BlogpostListComponent
+    component: BlogpostListComponent
   },
   {
     path: 'admin/blogposts/add',

@@ -12,36 +12,38 @@ import { Category } from '../../category/models/category.model';
   templateUrl: './edit-blogpost.component.html',
   styleUrls: ['./edit-blogpost.component.css']
 })
-export class EditBlogpostComponent implements OnInit, OnDestroy{
+export class EditBlogpostComponent implements OnInit, OnDestroy {
 
-id: string | null = null;
-routeSubscription?: Subscription;
-model?: BlogPost
-categories$?: Observable<Category[]>;
-selectedCategories?: string[]
-updateBlogPostSubcription?: Subscription;
-getBlogPostSubcription?: Subscription;
-deleteBlogPostSubcription?: Subscription;
+  id: string | null = null;
+  routeSubscription?: Subscription;
+  model?: BlogPost
+  categories$?: Observable<Category[]>;
+  selectedCategories?: string[]
+  updateBlogPostSubcription?: Subscription;
+  getBlogPostSubcription?: Subscription;
+  deleteBlogPostSubcription?: Subscription;
+  username: string | undefined | null;
+  isAuthor: boolean = false;
 
-constructor(private route: ActivatedRoute,
-  private blogPostServices: BlogPostService,
-  private categoryService: CategoryService,
-  private router: Router){
+  constructor(private route: ActivatedRoute,
+    private blogPostServices: BlogPostService,
+    private categoryService: CategoryService,
+    private router: Router) {
 
-}
-
-onDelete():void{
-  if(this.id){
-    // call the service and delete blog post
-
-   this.deleteBlogPostSubcription =  this.blogPostServices.deleteBlogPost(this.id)
-    .subscribe({
-      next: (response) =>{
-        this.router.navigateByUrl('/admin/blogposts');
-      }
-    });
   }
-}
+
+  onDelete(): void {
+    if (this.id) {
+      // call the service and delete blog post
+
+      this.deleteBlogPostSubcription = this.blogPostServices.deleteBlogPost(this.id)
+        .subscribe({
+          next: (response) => {
+            this.router.navigateByUrl('/admin/blogposts');
+          }
+        });
+    }
+  }
   ngOnDestroy(): void {
     this.routeSubscription?.unsubscribe();
     this.updateBlogPostSubcription?.unsubscribe();
@@ -50,33 +52,33 @@ onDelete():void{
   }
 
   ngOnInit(): void {
-   this.categories$ =  this.categoryService.getAllCategories();
+    this.categories$ = this.categoryService.getAllCategories();
 
-   this.routeSubscription =  this.route.paramMap.subscribe({
-      next: (params) =>{
-       this.id = params.get('id');
+    this.routeSubscription = this.route.paramMap.subscribe({
+      next: (params) => {
+        this.id = params.get('id');
 
-       // get blog post from Api
-       if(this.id){
-       this.getBlogPostSubcription = this.blogPostServices.getBlogPostById(this.id).subscribe({
-          next: (response) => {
-            this.model = response;
+        // get blog post from Api
+        if (this.id) {
+          this.getBlogPostSubcription = this.blogPostServices.getBlogPostById(this.id).subscribe({
+            next: (response) => {
+              this.model = response;
+              if (response.user.username.toLowerCase().trim() === this.username?.toLowerCase().trim()) {
+                this.isAuthor = true;
+              }
+              this.selectedCategories = response.map(x => x.id);
 
-             this.selectedCategories = response.map(x => x.id);
-
-          }
-        });;
-       }
-     
-
+            }
+          });;
+        }
       }
     });
   }
 
-  onFormSubmit():void{
+  onFormSubmit(): void {
     //  Convert this mode to request object
 
-    if(this.model && this.id){
+    if (this.model && this.id) {
       var updateBolgPost: updateBolgPost = {
         title: this.model.title,
         content: this.model.content,
@@ -84,12 +86,12 @@ onDelete():void{
         categories: this.selectedCategories ?? [],
         id: 0
       };
-      this.updateBlogPostSubcription = this.blogPostServices.updateBlogPost(this.id,updateBolgPost)
-      .subscribe({
-        next: (response) => {
-          this.router.navigateByUrl('/admin/blogposts');
-        }
-      });
+      this.updateBlogPostSubcription = this.blogPostServices.updateBlogPost(this.id, updateBolgPost)
+        .subscribe({
+          next: (response) => {
+            this.router.navigateByUrl('/admin/blogposts');
+          }
+        });
 
     }
 
