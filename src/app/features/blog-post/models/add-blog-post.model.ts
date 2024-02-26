@@ -1,8 +1,12 @@
-export interface AddBlogPost {
 
-    title: string;
+import { Category } from "../../category/models/category.model";
 
-    content: string;
-    createdAt: Date;
-    categories: string[];
+export interface AddBlogPost{
+    id: number;
+title:string;
+
+content: string;
+createdAt: Date;
+categories: Category[];
+
 }

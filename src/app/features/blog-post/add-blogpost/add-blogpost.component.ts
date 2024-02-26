@@ -14,17 +14,18 @@ import { Category } from '../../category/models/category.model';
 export class AddBlogpostComponent implements OnInit{
     model: AddBlogPost;
     categories$?: Observable<Category[]>;
-    selectedCategories: string[] = []; 
+    selectedCategories?: string[] = []; 
 categories: any;
 
     constructor(private BlogPostService: BlogPostService,
       private router: Router, private categoryService: CategoryService){
       this.model = {
+        id: 0,
         title: '',
         content: '',
         createdAt: new Date(),
        // categories: Category[] =[]
-        categories: []
+       categories: []
       }
     }
   ngOnInit(): void {
@@ -32,12 +33,7 @@ categories: any;
   }
 
     onFormSubmit(): void {
-      // Assuming selectedCategories is updated from your form control
-      if (this.selectedCategories === undefined) {
-        this.selectedCategories = []; // Initialize if undefined
-      }
-    
-      this.model.categories = this.selectedCategories;
+      
       console.log(this.model);
       
       this.BlogPostService.createBlogPost(this.model)

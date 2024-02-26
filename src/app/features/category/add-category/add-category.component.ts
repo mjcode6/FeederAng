@@ -26,6 +26,7 @@ constructor(private CategoryService: CategoryService,
  
 
 onFormSubmit(){
+  console.log(this.model);
   
      this.addCategorySubcription    = this.CategoryService.addCategory(this.model)
 .subscribe({
