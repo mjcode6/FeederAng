@@ -14,8 +14,6 @@ import { Category } from '../../category/models/category.model';
 export class AddBlogpostComponent implements OnInit{
     model: AddBlogPost;
     categories$?: Observable<Category[]>;
-    selectedCategories?: string[] = []; 
-categories: any;
 
     constructor(private BlogPostService: BlogPostService,
       private router: Router, private categoryService: CategoryService){
@@ -24,24 +22,25 @@ categories: any;
         title: '',
         content: '',
         createdAt: new Date(),
-       // categories: Category[] =[]
-       categories: []
+        categories: []
       }
     }
   ngOnInit(): void {
     this.categories$ = this.categoryService.getAllCategories();
   }
 
-    onFormSubmit(): void {
-      
+
+    onFormSubmit(): void{
       console.log(this.model);
-      
-      this.BlogPostService.createBlogPost(this.model)
-        .subscribe({
-          next: (response) => {
-            this.router.navigateByUrl('/admin/blogposts');
-          }
-        });
+   this.BlogPostService.createBlogPost(this.model)
+   .subscribe({
+    next: (response) => {
+      this.router.navigateByUrl('/admin/blogposts');
     }
-    
+   })
+   ;
+
+
+
+    }
 }

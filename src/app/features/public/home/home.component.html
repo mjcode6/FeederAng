@@ -9,8 +9,8 @@
           <div class="article">
             <h2>{{ article.title }}</h2>
             <p><strong>Date:</strong> {{ article.createdAt | date }}</p>
-            <p><strong>Author:</strong> {{ article.author }}</p>
-            <p><strong>Category:</strong> {{ article.categories }}</p>
+           
+           <!--   <p><strong>Category:</strong> {{ article.categories }}</p>  -->
             <p *ngIf="article.showContent">{{ article.content }}</p>
             <button (click)="toggleContent(article)">See More ...</button>
           </div>

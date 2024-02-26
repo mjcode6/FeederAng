@@ -10,14 +10,14 @@ import { BlogPost } from '../models/blog-post.model';
 })
 export class BlogpostListComponent implements OnInit {
 
-blogPosts$?: Observable<BlogPost[]>;
+blogPosts?: Observable<BlogPost[]>;
 constructor(private BlogPostSevice: BlogPostService){
 
 }
 
   ngOnInit(): void {
     // get all blog post from api
-    this.blogPosts$ = this.BlogPostSevice.getAllBlogPosts();
+    this.blogPosts = this.BlogPostSevice.getAllBlogPosts();
   }
 
 }
