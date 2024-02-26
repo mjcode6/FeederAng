@@ -40,12 +40,14 @@ export class SignInComponent {
             username: usernameValue,
             password: passwordValue
         };
+        console.log(askUser.username, askUser.password)
         // Make HTTP POST request with form data in the request body
         this.httpClient.post<any>('http://localhost:8080/api/users/verify', formValues).subscribe(
             response => {
+                console.log(response.username, response)
                 // Gérer la réponse du serveur ici
                 // console.log('Réponse du serveur :', response);
-                if (askUser.username === response.username) {
+                if (askUser.username === response.username && response.message === "User authenticated successfully") {
                     if (response.username) {
                         // console.log("Username = " + usernameValue);
                         this.authService.setUsername(response.username);
@@ -53,6 +55,7 @@ export class SignInComponent {
                             window.location.reload();
                         });
                     }
+
                 }
             },
             error => {
